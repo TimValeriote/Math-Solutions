@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -17,21 +18,27 @@ public class Percentiles {
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("How many numbers are there: ");
-        float ammount = scan.nextInt();
-        int [] nums = null;
+        System.out.println("Please enter the ammount of numbers: ");
+        int ammount = scan.nextInt();
         
+        int[] numbers = new int[ammount];
         
         for (int i = 0; i < ammount; i++) {
-            System.out.println("Please enter a number");
-            int temp = scan.nextInt();
-            nums[i] = temp;
+            System.out.println("Please enter a number: ");
+            numbers[i] = scan.nextInt();
         }
-        System.out.println("Please enter the percentile you would like to find: ");
+        Arrays.sort(numbers);
+        
+        System.out.println("What percentile are you looking for (in a decimal)?: ");
         float perc = scan.nextFloat();
         
-        float at = ammount * perc;
-        System.out.println("Your percentile is at spot: " + at);
+        double found = ammount * perc;
+        System.out.println("The number you are looking for is in spot: " + found);
+        
+        int produce = numbers[(int)found-1];
+
+        
+        System.out.println("The number at P" + perc * 100 + " is: " + produce);
         
     }
 }
