@@ -28,6 +28,9 @@ public class Quartiles {
             numbers[i] = scan.nextInt();
         }
         Arrays.sort(numbers);
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println(numbers[i]);
+        }
 
         double tempq1 = numbers.length * 0.25;
         double tempq2 = numbers.length * 0.50;
@@ -43,19 +46,17 @@ public class Quartiles {
             double q1 = (high + low) / 2;
             System.out.println("Quartile 1 is: " + numbers[(int) q1]);
         } else {
-            int q1 = numbers[(int) tempq1];
-            System.out.println("Quartile 1 is: " + q1);
+            System.out.println("Quartile 1 is: " + numbers[(int) tempq1]);
         }
 
         if (remainderq2 != 0) {
             double high = Math.ceil(tempq2);
             double low = Math.floor(tempq2);
             double q2 = (high + low) / 2;
-            System.out.println("Quartile 2 is: " + numbers[(int) q2]);
+            System.out.println("Quartile 2 (or median) is: " + numbers[(int) q2]);
 
         } else {
-            int q2 = numbers[(int) tempq2];
-            System.out.println("Quartile 2 (or median) is: " + q2);
+            System.out.println("Quartile 2 (or median) is: " + numbers[(int) tempq2]);
         }
 
         if (remainderq3 != 0) {
@@ -65,8 +66,7 @@ public class Quartiles {
             System.out.println("Quartile 3 is: " + numbers[(int) q3]);
 
         } else {
-            int q3 = numbers[(int) tempq3];
-            System.out.println("Quartile 3 is: " + q3);
+            System.out.println("Quartile 3 is: " + numbers[(int) tempq3]);
         }
 
     }
