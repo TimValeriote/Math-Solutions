@@ -21,62 +21,53 @@ public class Quartiles {
         int ammount = scan.nextInt();
         int[] numbers = new int[ammount];
         int length = numbers.length;
-        double found = 0;
+        double foundQ2 = 0;
+        double foundQ1 = 0;
         for (int i = 0; i < numbers.length; i++) {
             System.out.println("Please enter a number: ");
             numbers[i] = scan.nextInt();
         }
         Arrays.sort(numbers);
 
-        int tempQ2 = length % 2;
-        if (tempQ2 == 0) {
-            double q2 = length / 2;
-            double low = q2;
-            double high = low + 1;
-            double total = numbers[(int) low - 1] + numbers[(int) high - 1];
-            found = total / 2;
-            System.out.println("Quartile 2 is: " + found);
+        double tempq1 = numbers.length * 0.25;
+        double tempq2 = numbers.length * 0.50;
+        double tempq3 = numbers.length * 0.75;
 
-        } else if (tempQ2 == 1) {
+        double remainderq1 = tempq1 - (int) tempq1;
+        double remainderq2 = tempq2 - (int) tempq2;
+        double remainderq3 = tempq3 - (int) tempq3;
 
-            int q2 = length / 2;
-            System.out.println("Quartile 2 (or median) is: " + numbers[q2]);
+        if (remainderq1 != 0) {
+            double high = Math.ceil(tempq1);
+            double low = Math.floor(tempq1);
+            double q1 = (high + low) / 2;
+            System.out.println("Quartile 1 is: " + numbers[(int) q1]);
+        } else {
+            int q1 = numbers[(int) tempq1];
+            System.out.println("Quartile 1 is: " + q1);
         }
-        
-        double tempQ1 = found%2;
-        if (tempQ1 == 0) {
-            double q1 = found / 2;
-            double low = q1;
-            double high = low + 1;
-            double total = numbers[(int) low - 1] + numbers[(int) high - 1];
-            
-            System.out.println("Quartile 1 is: " + found);
 
-        } else if (tempQ1 == 1) {
-            int q1 = length / 2;
-            System.out.println("Quartile 1 is: " + numbers[q1]);
+        if (remainderq2 != 0) {
+            double high = Math.ceil(tempq2);
+            double low = Math.floor(tempq2);
+            double q2 = (high + low) / 2;
+            System.out.println("Quartile 2 is: " + numbers[(int) q2]);
+
+        } else {
+            int q2 = numbers[(int) tempq2];
+            System.out.println("Quartile 2 (or median) is: " + q2);
+        }
+
+        if (remainderq3 != 0) {
+            double high = Math.ceil(tempq3);
+            double low = Math.floor(tempq3);
+            double q3 = (high + low) / 2;
+            System.out.println("Quartile 3 is: " + numbers[(int) q3]);
+
+        } else {
+            int q3 = numbers[(int) tempq3];
+            System.out.println("Quartile 3 is: " + q3);
         }
 
     }
 }
-//Q2:
-//take the array
-//mod it by 2
-//if there is no remainder
-//we need to divided the array by 2
-//make a value for the low number
-//then make a value for the high number
-//be sure to add 1 to each because an array starts with 0
-//the add the 2 numbers and divide them by 2
-//output the found number
-//else
-//we divide the length by 2
-//and pick the spot int he array length divded by 2 is
-
-//Q1:
-//if the Q2 is not a decimal (no remainder)
-//divide the length by 2 so you have the mean
-//mod Q2
-//if the mod Q2 is not a decimal
-// then you have your Q1
-//else
