@@ -32,38 +32,41 @@ public class Quartiles {
             System.out.println(numbers[i]);
         }
 
-        double tempq1 = numbers.length * 0.25;
-        double tempq2 = numbers.length * 0.50;
-        double tempq3 = numbers.length * 0.75;
+        double tempq1 = ammount * 0.25;
+//        double tempq2 = ammount * 0.50;
+        double tempq3 = ammount * 0.75;
 
         double remainderq1 = tempq1 - (int) tempq1;
-        double remainderq2 = tempq2 - (int) tempq2;
+//        double remainderq2 = tempq2 - (int) tempq2;
         double remainderq3 = tempq3 - (int) tempq3;
 
-        if (remainderq1 != 0) {
-            double high = Math.ceil(tempq1);
-            double low = Math.floor(tempq1);
+        if (remainderq1 < 0) {
+            double high = Math.ceil(ammount * 0.25);
+            double low = Math.floor(ammount * 0.25);
             double q1 = (high + low) / 2;
-            System.out.println("Quartile 1 is: " + numbers[(int) q1]);
+            System.out.println("Quartile 1 is: " + q1);
         } else {
             System.out.println("Quartile 1 is: " + numbers[(int) tempq1]);
         }
 
-        if (remainderq2 != 0) {
-            double high = Math.ceil(tempq2);
-            double low = Math.floor(tempq2);
-            double q2 = (high + low) / 2;
-            System.out.println("Quartile 2 (or median) is: " + numbers[(int) q2]);
-
-        } else {
-            System.out.println("Quartile 2 (or median) is: " + numbers[(int) tempq2]);
+        if (ammount % 2 == 1) {
+            double q2 = ammount / 2;
+            q2 = Math.floor(q2);
+            System.out.println("Quartile 2 (or median) is: " + numbers[(int)q2]);
+        } else if (ammount % 2 == 0) {
+            double high = ammount / 2;
+            double low = (ammount / 2) - 1;
+            double found = numbers[(int)high] + numbers[(int)low];
+            found = found / 2;
+            System.out.println("Quartile 2 (or median) is: " + found);
         }
 
-        if (remainderq3 != 0) {
-            double high = Math.ceil(tempq3);
-            double low = Math.floor(tempq3);
+        if (remainderq3 < 0) {
+            double high = Math.ceil(ammount * 0.75);
+            double low = Math.floor(ammount * 0.75);
             double q3 = (high + low) / 2;
-            System.out.println("Quartile 3 is: " + numbers[(int) q3]);
+            
+            System.out.println("Quartile 3 is: " + q3);
 
         } else {
             System.out.println("Quartile 3 is: " + numbers[(int) tempq3]);
