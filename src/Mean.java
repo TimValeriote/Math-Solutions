@@ -33,8 +33,3 @@ public class Mean {
         
     }
 }
-
-//ask for ammount of numbers
-//for the ammount of numbers
-//input each number
-//store that number
